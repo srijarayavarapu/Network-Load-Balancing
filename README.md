@@ -54,6 +54,30 @@ The first available server reached by BFS provides the shortest migration path f
 **No Available Server:**  
 If BFS explores all reachable servers and none has available capacity, the job cannot be assigned within the reachable portion of the network.
 
+### BFS Process
+
+Start at overloaded server
+          ↓
+Check available capacity
+          ↓
+   Is capacity available?
+       ↙          ↘
+     Yes           No
+      ↓             ↓
+ Assign Job     Start BFS
+      ↓             ↓
+    Finish      Explore neighbors
+                    ↓
+             Is capacity available?
+                ↙          ↘
+              Yes           No
+               ↓             ↓
+          Assign Job    Continue BFS
+               ↓             ↓
+             Finish    Explore next level
+                              ↓
+                         Repeat search
+
 
 
 <img width="597" height="934" alt="Job migration output" src="https://github.com/user-attachments/assets/028f246e-b0a6-45fa-a368-62ad78b551fe" />
