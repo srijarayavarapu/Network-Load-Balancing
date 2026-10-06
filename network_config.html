@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>⚙️ Configure Network</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>🛠 Setup Your Server Network</h2>
+    <form method="POST">
+      <textarea name="nodes" placeholder="Enter nodes (e.g., N1 3 J1,J2)" rows="6"></textarea><br>
+      <textarea name="edges" placeholder="Enter edges (e.g., N1 N2)" rows="6"></textarea><br>
+      <button type="submit" class="btn">✅ Save Network</button>
+    </form>
+  </div>
+</body>
+</html>

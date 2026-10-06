@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📤 Submit Job</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>📤 Submit New Job</h2>
+    <form method="POST">
+      <input type="text" name="node_id" placeholder="Enter Node ID (e.g., N1)" required>
+      <input type="text" name="job_id" placeholder="Enter Job ID (e.g., J3)" required>
+      <button type="submit" class="btn">🚀 Submit Job</button>
+    </form>
+
+    {% if message %}
+      <div class="message">{{ message|safe }}</div>
+    {% endif %}
+
+    {% if image_path %}
+      <h4>📊 Network Visualization:</h4>
+      <div class="image-preview">
+        <img src="{{ url_for('static', filename=image_path) }}" alt="Network Graph" style="max-width:100%; border:1px solid #ccc; padding:10px; border-radius:8px;">
+      </div>
+    {% endif %}
+
+    {% if network %}
+      <div class="network-details">
+        <h3>📡 Current Network State</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>🆔 Node ID</th>
+              <th>🎯 Capacity</th>
+              <th>📦 Current Jobs</th>
+              <th>🔗 Neighbors</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for node_id, jobs in network.items() %}
+              <tr>
+                <td>{{ node_id }}</td>
+                <td>{{ capacities[node_id] }}</td>
+                <td>{{ jobs | join(', ') if jobs else 'None' }}</td>
+                <td>{{ graph[node_id] | join(', ') if graph[node_id] else 'None' }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
